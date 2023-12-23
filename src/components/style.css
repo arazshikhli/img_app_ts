@@ -3,4 +3,27 @@
     min-height: 64px;
     background-color: bisque;
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+li {
+    margin-right: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.nav-link a {
+    text-decoration: none;
+    color: black;
 }

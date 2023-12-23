@@ -1,22 +1,21 @@
 import { useUnit } from "effector-react"
 import { useEffect, useMemo, useState } from "react"
-import { getPhotosFx } from "../../api/api"
+import { GetdataFx } from "../../api/api"
 import { $photos, setPhotos } from "../../context"
-import { IImage } from "../../types/interfaces"
+import { IImage } from "../../types/photo.interfaces"
 import { PhotosList } from "./PhotosList"
 import React from "react"
+import { SearchComponent } from "./Search"
 
-export const PhotosPage = ({ search }: { search: string }) => {
+export const PhotosPage = () => {
   const key = 'LmimnbcCCFaWU7wgWSua5vVWVmONrzv8xKKtfXhU9c39TLMYIeSf7UOD'
   const URL = `https://api.pexels.com/v1/search?query=nature`
-
-  const controller = new AbortController()
   const [images, setImages] = useState<IImage[]>()
   const [title, setTitle] = useState()
   const store = useUnit($photos)
 
   const handleGetPhotos = async () => {
-    const photos = await getPhotosFx(URL)
+    const photos = await GetdataFx(URL)
     setPhotos(photos)
     setImages(store)
   }
@@ -26,6 +25,7 @@ export const PhotosPage = ({ search }: { search: string }) => {
     console.log(handleGetPhotos())
   }, [title])
   return <div>
+    {/* <SearchComponent searchValue={searchValue} setSearchValue={setSearchValue} /> */}
     {useMemo(() => <PhotosList photos={store} key={Math.random()} />, [store])}
   </div>
 }

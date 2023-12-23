@@ -1,7 +1,7 @@
-import { useState } from "react"
+import React, { useState, Dispatch, SetStateAction } from "react"
 
-export const SearchComponent = ({ search }: { search: string }) => {
-    const [searchValue, setSearchValue] = useState('')
+export const SearchComponent = ({ searchValue, setSearchValue }: { searchValue: string, setSearchValue: (value: string) => void }) => {
+
     return <div className="search-container">
         <span>Поиск</span>
         <input

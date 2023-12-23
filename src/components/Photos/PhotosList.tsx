@@ -1,30 +1,43 @@
 import { Skeleton } from "@mui/material"
-import { IImage } from "../../types/interfaces"
+import { IImage } from "../../types/photo.interfaces"
 import './style.css'
 import { url } from "inspector"
-export const PhotosList = ({ photos }: { photos: IImage[] }, { search }: { search: string }) => {
-  console.log(photos)
-  return <>
-    <div className='wrapper'>
+import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
+import { PhotoPage } from "./PhotoPage"
+export const PhotosList = ({ photos }: { photos: IImage[] }) => {
 
+  const [filteredList, setFilteredList] = useState<IImage[]>(photos)
+  const [searchValue, setSearchValue] = useState('')
+
+  // const getFilteredPhotos = () => {
+
+  //   // const filteredImages = photos.filter(filtered => filtered.photographer?.includes(search))
+  //   // setFilteredList(filteredImages)
+  //   console.log(searchValue)
+  // }
+  // useEffect(() => {
+  //   setSearchValue(searchValue)
+  //   console.log("searchValue: ", searchValue)
+  // }, [searchValue])
+  return <>
+    <div className="search-container">
+      <span>Поиск</span>
+      <input
+        className="search-input"
+        type="text"
+        value={searchValue}
+        onChange={event => setSearchValue(event.target.value)}
+      />
+      <p>{searchValue}</p>
+    </div>
+    <div className='wrapper'>
       {
-        photos.filter(photo => photo.photographer?.includes(search)).
+        photos.filter(photo => photo.photographer?.toLowerCase().includes(searchValue)).
           map((filtered) =>
+
             <ul>
-              <div className='item'
-              >
-                <div style={{
-                  width: '100%', height: '200px', backgroundImage: `url('${filtered.src.original}')`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: 'center',
-                  backgroundSize: 'cover'
-                }}></div>
-                <div className='title'>
-                  {filtered ? (<li><p>Author: {filtered.photographer}</p></li>) : <Skeleton variant='text' width={300} height={20} className='skeleton' />}
-                  <Skeleton variant="text" width={300} height={20} className="skeleton" />
-                  <li><button className='btn'>more info...</button></li>
-                </div>
-              </div>
+              <PhotoPage image={filtered} />
             </ul>
 
           )
