@@ -1,9 +1,15 @@
+
+header{
+    position: fixed;
+    width: 100%;
+}
 .navbar {
     width: 100%;
     min-height: 64px;
     background-color: bisque;
     margin-bottom: 10px;
     display: flex;
+
     flex-direction: row;
 }
 

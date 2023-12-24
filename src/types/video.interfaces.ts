@@ -14,16 +14,17 @@ export interface IVideo {
     image: string;
     duration: string;
     user: IUser;
-    video_files: IVideoFiles
+    video_files: IVideoFiles[]
 
 }
 
 export interface IVideoFiles {
-    "id": number;
-    "quality": string;
-    "file_type": string;
-    "width": number;
-    "height": number;
+    id: number;
+    quality: string;
+    file_type: string;
+    width: number;
+    height: number;
+    fps:number;
     link: string
 }
 

@@ -3,7 +3,7 @@ import { IVideo } from "../../types/video.interfaces"
 import { useUnit } from "effector-react"
 import { $videos, setVideos } from "../../context"
 import { GetdataFx } from "../../api/api"
-
+import './style.css'
 
 export const VideosPage = () => {
     const key = 'LmimnbcCCFaWU7wgWSua5vVWVmONrzv8xKKtfXhU9c39TLMYIeSf7UOD'
@@ -13,7 +13,7 @@ export const VideosPage = () => {
     const store = useUnit($videos)
 
     const handleGetVideos = async () => {
-        const videos = await GetdataFx(URL)
+        const videos = await GetdataFx({url:URL,type:'videos'})
         console.log("videos: ", videos)
         setVideos(videos)
         setUseVideo(store)
@@ -24,17 +24,16 @@ export const VideosPage = () => {
         console.log("Store ", store)
         console.log("useVideo ", useVideo)
     }, [title])
-    return <div>
+    return <div className="video-container">
 
+{useMemo(()=>store.map(video=><div className="video-item">
+<video width={300} height={300} controls>
+    <source src={video.video_files[0].link}/>
+</video>
+<p>Author: {video.user.name}</p>
+<p>{video.duration}</p>
 
-        {useMemo(() => store.map(video => {
-            console.log(video);
-            return <ul>
-                <li><p>{video.user.name}</p></li>
-            </ul>
-        }
-        ), [store])}
-
+</div>),[store])}
     </div>
 
 }
