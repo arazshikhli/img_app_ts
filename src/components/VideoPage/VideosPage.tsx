@@ -4,6 +4,7 @@ import { useUnit } from "effector-react"
 import { $videos, setVideos } from "../../context"
 import { GetdataFx } from "../../api/api"
 import './style.css'
+import { Card, CardMedia } from "@mui/material"
 
 export const VideosPage = () => {
     const key = 'LmimnbcCCFaWU7wgWSua5vVWVmONrzv8xKKtfXhU9c39TLMYIeSf7UOD'
@@ -26,14 +27,16 @@ export const VideosPage = () => {
     }, [title])
     return <div className="video-container">
 
-{useMemo(()=>store.map(video=><div className="video-item">
-<video width={300} height={300} controls>
+{useMemo(()=>store.map(video=><Card>
+
+<CardMedia component={'video'} image={video.video_files[0].link} controls/>
+{/* <video width={300} height={300} controls>
     <source src={video.video_files[0].link}/>
-</video>
+</video> */}
 <p>Author: {video.user.name}</p>
 <p>{video.duration}</p>
 
-</div>),[store])}
+</Card>),[store])}
     </div>
 
 }
