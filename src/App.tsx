@@ -13,8 +13,9 @@ function App() {
 
   return (<><div className='App'>
     <Header />
-    <VideosPage />
-    <PhotosPage />
+    
+    {/* <VideosPage />
+    <PhotosPage /> */}
   </div>
 
   </>

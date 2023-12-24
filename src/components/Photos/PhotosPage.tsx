@@ -15,7 +15,7 @@ export const PhotosPage = () => {
   const store = useUnit($photos)
 
   const handleGetPhotos = async () => {
-    const photos = await GetdataFx(URL)
+    const photos = await GetdataFx({url:URL,type:'photos'})
     setPhotos(photos)
     setImages(store)
   }
