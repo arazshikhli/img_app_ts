@@ -31,7 +31,7 @@ export const PhotosList = ({ photos }: { photos: IImage[] }) => {
       />
       <p>{searchValue}</p>
     </div>
-    <div className='wrapper'>
+    <div className='wrapper1'>
       {
         photos.filter(photo => photo.photographer?.toLowerCase().includes(searchValue)).
           map((filtered) =>

@@ -13,8 +13,13 @@ export const VideosPage = () => {
     const [title, setTitle] = useState()
     const store = useUnit($videos)
 
+    // const [query, SetQuery] = useState('react')
+    // const [page, setPage] = useState(1)
+    // const [pageQty, setPageQty] = useState(0);
+
+
     const handleGetVideos = async () => {
-        const videos = await GetdataFx({url:URL,type:'videos'})
+        const videos = await GetdataFx({ url: URL, type: 'videos' })
         console.log("videos: ", videos)
         setVideos(videos)
         setUseVideo(store)
@@ -27,16 +32,16 @@ export const VideosPage = () => {
     }, [title])
     return <div className="video-container">
 
-{useMemo(()=>store.map(video=><Card>
+        {useMemo(() => store.map(video => <Card>
 
-<CardMedia component={'video'} image={video.video_files[0].link} controls/>
-{/* <video width={300} height={300} controls>
+            <CardMedia component={'video'} image={video.video_files[0].link} controls />
+            {/* <video width={300} height={300} controls>
     <source src={video.video_files[0].link}/>
 </video> */}
-<p>Author: {video.user.name}</p>
-<p>{video.duration}</p>
+            <p>Author: {video.user.name}</p>
+            <p>{video.duration}</p>
 
-</Card>),[store])}
+        </Card>), [store])}
     </div>
 
 }
