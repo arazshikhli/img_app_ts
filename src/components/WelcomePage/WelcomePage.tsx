@@ -1,5 +1,7 @@
 import { Box, Card, CardHeader, Container, Grid, Typography } from "@mui/material"
 import './style.css'
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import { Link } from "react-router-dom";
 export const WelcomePage = () => {
     return <Container
         sx={{
@@ -15,42 +17,55 @@ export const WelcomePage = () => {
             sx={{}}
         >Welcome To Gallery Application</Typography>
         <Box
+            className='box'
             sx={{
                 display: 'flex',
                 flexDirection: 'row',
                 color: 'black',
-                justifyContent: 'space-around'
+                justifyContent: 'space-around',
+                minHeight: '500px',
+                alignItems: 'center'
             }}
         >
             <Card
                 className="item-card"
                 sx={{
-                    width: '500px',
-                    minHeight: '500px'
+                    width: '300px',
+                    height: '300px',
+                    marginRight: "100px"
                 }}>
-                <Typography
-                    variant="h6"
-                    sx={{
-                        color: 'black'
-                    }}
-                >Videos</Typography>
-
-
+                <div className="box-title">
+                    <Typography
+                        variant="h6"
+                        sx={{
+                            color: 'black'
+                        }}
+                    >Videos</Typography>
+                </div>
+                <div className="inner-box">
+                    <Link to={'/videos'}>
+                        <PlayCircleIcon
+                            sx={{
+                                width: '80%',
+                                height: '80%'
+                            }}
+                        /></Link>
+                </div>
             </Card>
             <Card
                 className="item-card"
                 sx={{
-                    width: '500px',
-                    minHeight: '500px'
+                    width: '300px',
+                    height: '300px'
                 }}>
-
-                <Typography
-                    variant="h6"
-                    sx={{
-                        color: 'black'
-                    }}
-                >Photos</Typography>
-
+                <Link to={'./photos'}>
+                    <Typography
+                        variant="h6"
+                        sx={{
+                            color: 'black'
+                        }}
+                    >Photos</Typography>
+                </Link>
             </Card>
         </Box>
     </Container>

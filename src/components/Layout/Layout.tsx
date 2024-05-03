@@ -24,7 +24,8 @@ export const Layout = () => {
                 <Link
                     style={{
                         flexGrow: 1,
-                        width: 'auto'
+                        width: 'auto',
+                        textDecoration: 'none'
                     }}
                     to={'/'}>
                     <Typography variant='h6'

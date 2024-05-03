@@ -6,6 +6,7 @@
     column-gap: 5px;
     grid-template: auto;
     justify-items: center;
+    margin: 50px 0 50px 0;
 
 }
 
@@ -20,4 +21,11 @@
     background-color: antiquewhite;
     color: black;
     text-align: start;
+}
+.title-container{
+    height: 50px;
+    margin:0;
+}
+.title{
+    color:black ;
 }

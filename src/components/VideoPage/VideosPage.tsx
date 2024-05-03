@@ -34,12 +34,19 @@ export const VideosPage = () => {
 
         {useMemo(() => store.map(video => <Card>
 
-            <CardMedia component={'video'} image={video.video_files[0].link} controls />
+            <CardMedia
+                style={{
+                    height: '200px'
+                }}
+                component={'video'} image={video.video_files[0].link} controls />
             {/* <video width={300} height={300} controls>
     <source src={video.video_files[0].link}/>
 </video> */}
-            <p>Author: {video.user.name}</p>
-            <p>{video.duration}</p>
+            <div className="title-container">
+                <p className="title">Author: {video.user.name}</p>
+                {/* <p className="title">{video.duration}</p> */}
+
+            </div>
 
         </Card>), [store])}
     </div>

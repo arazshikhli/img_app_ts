@@ -1,4 +1,4 @@
-import { Skeleton } from "@mui/material"
+import { Skeleton, TextField, Typography } from "@mui/material"
 import { IImage } from "../../types/photo.interfaces"
 import './style.css'
 import { url } from "inspector"
@@ -22,23 +22,34 @@ export const PhotosList = ({ photos }: { photos: IImage[] }) => {
   // }, [searchValue])
   return <>
     <div className="search-container">
-      <span>Поиск</span>
-      <input
+      <Typography variant="h6" sx={{
+        margin: '20px 0 10px 0 ',
+      }}>Search Image:</Typography>
+      {/* <input
         className="search-input"
         type="text"
         value={searchValue}
         onChange={event => setSearchValue(event.target.value)}
+      /> */}
+      <TextField
+        type="text"
+        className="search-input"
+        value={searchValue}
+        sx={{
+          marginBottom: '20px',
+          borderRadius: '5px'
+        }}
+        onChange={event => setSearchValue(event.target.value)}
       />
-      <p>{searchValue}</p>
     </div>
     <div className='wrapper1'>
       {
         photos.filter(photo => photo.photographer?.toLowerCase().includes(searchValue)).
           map((filtered) =>
-
-            <ul>
-              <PhotoPage image={filtered} />
-            </ul>
+            filtered ? (
+              <div>
+                <PhotoPage image={filtered} />
+              </div>) : (<h1 style={{ color: 'wheat' }}>No items</h1>)
 
           )
       }
